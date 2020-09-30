@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,6 +26,9 @@ public class MainActivity extends Activity {
     private ArrayAdapter<String> adapter;
     private ListView listView;
 
+    private static  int prev_total = 0;
+    private  int curr_total = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,15 +38,17 @@ public class MainActivity extends Activity {
         listView.setVerticalScrollBarEnabled(false);
         listView.setId(android.R.id.list);
         listView.setDivider(null);
+        listView.setBackground(getDrawable( (int) (R.drawable.bg)));
         setContentView(listView);
         ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) listView.getLayoutParams();
-        p.setMargins(100, 50, 10, 10);
+        p.setMargins(0, 0, 0, 0);
 
         // List Installed Applications
         packageManager = getPackageManager();
         adapter = new ArrayAdapter<String>(
                 this, android.R.layout.simple_list_item_1, new ArrayList<String>());
         packageNames = new ArrayList<>();
+        prev_total = packageManager.getInstalledPackages(0).size();
 
         // Tap on an item in the list to launch the app
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -78,6 +84,8 @@ public class MainActivity extends Activity {
         adapter.clear();
         packageNames.clear();
 
+        int duration = Toast.LENGTH_SHORT;
+
         // Query the package manager for all apps
         List<ResolveInfo> activities = packageManager.queryIntentActivities(
                 new Intent(Intent.ACTION_MAIN, null).addCategory(Intent.CATEGORY_LAUNCHER), 0);
@@ -93,8 +101,19 @@ public class MainActivity extends Activity {
 
             adapter.add(appName);
             packageNames.add(resolver.activityInfo.packageName);
+
         }
+        curr_total = packageManager.getInstalledPackages(0).size();
         listView.setAdapter(adapter);
+        if(prev_total == curr_total) {
+           //Do Nothing
+        } else if(prev_total < curr_total) {
+            Toast.makeText(getApplicationContext(), "Application Installed Suceessfully", duration).show();
+            prev_total = curr_total;
+        } else if(prev_total > curr_total) {
+            Toast.makeText(getApplicationContext(), "Application Unistalled Suceessfully", duration).show();
+            prev_total = curr_total;
+        }
     }
 
     @Override
