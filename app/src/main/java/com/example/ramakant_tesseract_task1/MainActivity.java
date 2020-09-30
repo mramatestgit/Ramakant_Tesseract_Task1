@@ -118,7 +118,7 @@ public class MainActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        // Prevent the back button from closing the activity.
+        // Prevent the back button from closing the activity
         fetchAppList();
     }
 }
