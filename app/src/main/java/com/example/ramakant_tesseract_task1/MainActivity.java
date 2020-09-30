@@ -121,7 +121,4 @@ public class MainActivity extends Activity {
         // Prevent the back button from closing the activity.
         fetchAppList();
     }
-
-
-
 }
