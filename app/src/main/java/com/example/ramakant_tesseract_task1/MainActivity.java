@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
         listView.setDivider(null);
         setContentView(listView);
         ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) listView.getLayoutParams();
-        p.setMargins(100, 0, 0, 0);
+        p.setMargins(100, 50, 10, 10);
 
         // List Installed Applications
         packageManager = getPackageManager();
