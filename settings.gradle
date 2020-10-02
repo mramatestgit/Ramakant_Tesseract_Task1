@@ -1,2 +1,3 @@
+include ':ramakantSDK'
 include ':app'
 rootProject.name = "Ramakant_Tesseract_Task1"

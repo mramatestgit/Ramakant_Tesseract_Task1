@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@drawable/main_rectangle"
+    android:baselineAligned="true"
+    android:elevation="1dp"
+    android:id="@+id/ll_app"
+    android:orientation="horizontal"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_vertical"
+        android:padding="10dp"
+        android:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_appName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="App Name : YouTube"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/tv_pkgName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Package Name : com.android.YouTube"
+            android:textColor="@android:color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_className"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Class Name : YouTube.class"
+            android:textColor="@android:color/black" />
+
+
+        <TextView
+            android:id="@+id/tv_versionName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Version Name(Code) : v123(21.12.1)"
+            android:textColor="@android:color/black" />
+
+    </LinearLayout>
+
+</LinearLayout>
